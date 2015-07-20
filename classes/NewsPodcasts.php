@@ -218,6 +218,7 @@ class NewsPodcasts extends \Frontend
                 $objFeed->addItem( $objItem );
             }
         }
+
         // Create the file
         \File::putContent( 'share/' . $strFile . '.xml', $this->replaceInsertTags( $objFeed->$strType(), false ) );
 
