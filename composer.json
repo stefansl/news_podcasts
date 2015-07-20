@@ -1,0 +1,12 @@
+{
+  "extra": {
+    "contao": {
+      "transifex": {
+        "project": "news_podcasts",
+        "prefix": "",
+        "languages_cto": "languages",
+        "languages_tx": ".tx"
+      }
+    }
+  }
+}
