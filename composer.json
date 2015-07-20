@@ -10,7 +10,7 @@
   ],
   "type": "contao-module",
   "homepage": "https://github.com/stefansl/news_podcasts",
-  "license": "GNU/LGPL",
+  "license": "LGPL-3.0+",
   "authors": [
     {
       "name": "Stefan Schulz-Lauterbach",
