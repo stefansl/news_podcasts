@@ -194,18 +194,8 @@ $GLOBALS['TL_DCA']['tl_news_podcasts_feed'] = array
             'inputType'        => 'select',
             'options_callback' => array( 'tl_news_podcasts_feed', 'getItunesCategories' ),
             'eval'             => array( 'chosen' => true, 'mandatory' => true ),
-            'sql'              => "varchar(32) NOT NULL default ''"
+            'sql'              => "varchar(255) NOT NULL default ''"
         ),
-        /*
-        'category' => array
-        (
-            'label'                   => &$GLOBALS['TL_LANG']['tl_news_podcasts_feed']['category'],
-            'exclude'                 => true,
-            'inputType'               => 'text',
-            'eval'                    => array('mandatory'=>true, 'maxlength'=>255, 'tl_class'=>'long'),
-            'sql'                     => "varchar(255) NOT NULL default ''"
-        ),
-        */
         'owner'       => array
         (
             'label'     => &$GLOBALS['TL_LANG']['tl_news_podcasts_feed']['owner'],
