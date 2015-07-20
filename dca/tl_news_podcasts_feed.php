@@ -425,15 +425,14 @@ class tl_news_podcasts_feed extends Backend
             return;
         }
 
-        $this->import('iTunesFeed');
+        $feed = new NewsPodcasts();
 
         foreach ($session as $id)
         {
-            $this->iTunesFeed->generateItunes($id);
+            $feed->generateFeeds($id);
         }
 
-        $this->import('Automator');
-        $this->Automator->generateSitemap();
+
 
         $this->Session->set('itunes_feed_updater', null);
     }
