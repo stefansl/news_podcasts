@@ -5,11 +5,11 @@
  *
  * Copyright (c) 2005-2014 Leo Feyer
  *
- * @package     sermoner
- * @author      Samuel Heer
- * @author      Stefan Schulz-Lauterbach
- * @license     GNU/LGPL
- * @copyright   Samuel Heer 2014
+ * @package   news_packages
+ * @author    Samuel Heer
+ * @author	  Stefan Schulz-Lauterbach
+ * @license   GNU/LGPL
+ * @copyright Samuel Heer 2014
  */
 
 namespace CLICKPRESS;
@@ -46,21 +46,20 @@ class iTunesFeed extends \Feed
 
         $xml .= $this->generateItunesCategory();
 
-        foreach ($this->arrItems as $objItem) {
+        foreach ( $this->arrItems as $objItem ) {
             $xml .= '<item>';
             $xml .= '<title>' . specialchars( strip_tags( $objItem->title ) ) . '</title>';
             $xml .= '<author>' . specialchars( strip_tags( $objItem->author ) ) . '</author>';
             $xml .= '<description><![CDATA[' . preg_replace( '/[\n\r]+/', ' ', $objItem->description ) . ']]></description>';
             $xml .= '<link>' . specialchars( $objItem->link ) . '</link>';
             $xml .= '<pubDate>' . date( 'r', $objItem->published ) . '</pubDate>';
-            $xml .= '<itunes:subtitle><![CDATA[' . preg_replace( '/[\n\r]+/', ' ',
-                    $objItem->description ) . ']]></itunes:subtitle>';
+            $xml .= '<itunes:subtitle><![CDATA[' . preg_replace( '/[\n\r]+/', ' ', $objItem->description ) . ']]></itunes:subtitle>';
             $xml .= '<itunes:duration>' . $objItem->duration . '</itunes:duration>';
 
             // Add the GUID
-            if ($objItem->guid) {
+            if ( $objItem->guid ) {
                 // Add the isPermaLink attribute if the guid is not a link (see #4930)
-                if (strncmp( $objItem->guid, 'http://', 7 ) !== 0 && strncmp( $objItem->guid, 'https://', 8 ) !== 0) {
+                if ( strncmp( $objItem->guid, 'http://', 7 ) !== 0 && strncmp( $objItem->guid, 'https://', 8 ) !== 0 ) {
                     $xml .= '<guid isPermaLink="false">' . $objItem->guid . '</guid>';
                 } else {
                     $xml .= '<guid>' . $objItem->guid . '</guid>';
@@ -70,8 +69,8 @@ class iTunesFeed extends \Feed
             }
 
             // Enclosures
-            if (is_array( $objItem->enclosure )) {
-                foreach ($objItem->enclosure as $arrEnclosure) {
+            if ( is_array( $objItem->enclosure ) ) {
+                foreach ( $objItem->enclosure as $arrEnclosure ) {
                     $xml .= '<enclosure url="' . $arrEnclosure['url'] . '" length="' . $arrEnclosure['length'] . '" type="' . $arrEnclosure['type'] . '" />';
                 }
             }
@@ -94,11 +93,11 @@ class iTunesFeed extends \Feed
     protected function generateItunesCategory()
     {
 
-        $category = explode( '|', $this->category );
+        $category = explode('|',$this->category);
 
-        $catStr = '<itunes:category text="' . html_entity_decode( $category[0] ) . '">';
+        $catStr = '<itunes:category text="' . htmlentities( $category[0] ) . '">';
         if (isset($category[1])) {
-            $catStr .= '<itunes:category text="' . html_entity_decode( $category[1] ) . '" />';
+            $catStr .= '<itunes:category text="' . htmlentities( $category[1] ) . '" />';
         }
         $catStr .= '</itunes:category>';
 

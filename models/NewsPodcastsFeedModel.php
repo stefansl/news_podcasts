@@ -29,10 +29,21 @@ class NewsPodcastsFeedModel extends \Model
 
     /**
      * Table name
-     *
      * @var string
      */
     protected static $strTable = 'tl_news_podcasts_feed';
 
-
+    /**
+     * Find all feeds which include a certain news archive
+     *
+     * @param integer $intId      The news archive ID
+     * @param array   $arrOptions An optional options array
+     *
+     * @return \Model\Collection|null A collection of models or null if the news archive is not part of a feed
+     */
+    public static function findByArchive($intId, array $arrOptions=array())
+    {
+        $t = static::$strTable;
+        return static::findBy(array("$t.archives LIKE '%\"" . intval($intId) . "\"%'"), null, $arrOptions);
+    }
 }
