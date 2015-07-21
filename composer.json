@@ -1,13 +1,7 @@
 {
   "name": "clickpress/news_podcasts",
   "description": "Add podcast files to your news and generate iTunes compatible RSS",
-  "keywords": [
-    "contao",
-    "extension",
-    "podcast",
-    "itunes",
-    "RSS"
-  ],
+  "keywords": ["contao", "extension", "podcast", "itunes", "RSS"],
   "type": "contao-module",
   "homepage": "https://github.com/stefansl/news_podcasts",
   "license": "LGPL-3.0+",
@@ -23,7 +17,7 @@
     "source": "https://github.com/stefansl/news_podcasts"
   },
   "require": {
-    "php": ">=5.3",
+    "php": ">=5.3.2",
     "contao/core": ">=3,<4",
     "contao-community-alliance/composer-installer": "*"
   },
@@ -33,12 +27,12 @@
     ]
   },
   "replace": {
-    "contao-legacy/news_podcasts": "*"
+    "contao-legacy/news_podcasts": "self.version"
   },
   "extra": {
     "contao": {
       "sources": {
-        "news_podcasts": "system/modules/news_podcasts"
+        "": "system/modules/news_podcasts"
       },
       "transifex": {
         "project": "news_podcasts",
