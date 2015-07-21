@@ -1,4 +1,5 @@
 {
+
   "name": "stefansl/news_podcasts",
   "description": "Add podcast files to your news and generate iTunes compatible RSS",
   "keywords": ["contao", "extension", "podcast", "itunes", "RSS"],

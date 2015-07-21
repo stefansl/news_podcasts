@@ -223,5 +223,4 @@ class NewsPodcasts extends \Frontend
         \File::putContent( 'share/' . $strFile . '.xml', $this->replaceInsertTags( $objFeed->$strType(), false ) );
 
     }
-
 }

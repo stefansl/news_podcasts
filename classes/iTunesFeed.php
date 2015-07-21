@@ -5,9 +5,9 @@
  *
  * Copyright (c) 2005-2014 Leo Feyer
  *
- * @package   news_packages
+ * @package   news_podcasts
  * @author    Samuel Heer
- * @author	  Stefan Schulz-Lauterbach
+ * @author    Stefan Schulz-Lauterbach
  * @license   GNU/LGPL
  * @copyright Samuel Heer 2014
  */
