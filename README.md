@@ -1,3 +1,5 @@
+[![Version](http://img.shields.io/packagist/v/stefansl/news_podcasts.svg?style=flat-square)](http://packagist.com/packages/stefansl/news_podcasts)  [![GitHub license](https://img.shields.io/badge/license-GPL-blue.svg?style=flat-square)](https://raw.githubusercontent.com/stefansl/news_podcasts/master/LICENSE)
+
 # News Podcast for Contao
 
 Add podcast files to your news and generate iTunes compatible RSS
