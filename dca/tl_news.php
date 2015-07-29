@@ -11,7 +11,6 @@
  * @copyright CLICKPRESS Internetagentur 2015
  */
 
-// Todo: check permissions
 $GLOBALS['TL_DCA']['tl_news']['config']['onload_callback'][] = array('tl_news_podcast', 'generatePodcastFeed');
 $GLOBALS['TL_DCA']['tl_news']['config']['oncut_callback'][] = array('tl_news_podcast', 'schedulePodcastUpdate');
 $GLOBALS['TL_DCA']['tl_news']['config']['ondelete_callback'][] = array('tl_news_podcast', 'schedulePodcastUpdate');

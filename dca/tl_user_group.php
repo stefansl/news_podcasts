@@ -18,27 +18,6 @@ $GLOBALS['TL_DCA']['tl_user_group']['palettes']['default'] = str_replace('newsfe
 /**
  * Add fields to tl_user_group
  */
-/*$GLOBALS['TL_DCA']['tl_user_group']['fields']['newspodcastsfeed'] = array
-(
-	'label'                   => &$GLOBALS['TL_LANG']['tl_user']['news'],
-	'exclude'                 => true,
-	'inputType'               => 'checkbox',
-	'foreignKey'              => 'tl_news_archive.title',
-	'eval'                    => array('multiple'=>true),
-	'sql'                     => "blob NULL"
-);
-
-$GLOBALS['TL_DCA']['tl_user_group']['fields']['newp'] = array
-(
-	'label'                   => &$GLOBALS['TL_LANG']['tl_user']['newp'],
-	'exclude'                 => true,
-	'inputType'               => 'checkbox',
-	'options'                 => array('create', 'delete'),
-	'reference'               => &$GLOBALS['TL_LANG']['MSC'],
-	'eval'                    => array('multiple'=>true),
-	'sql'                     => "blob NULL"
-);*/
-
 $GLOBALS['TL_DCA']['tl_user_group']['fields']['newspodcastsfeeds'] = array
 (
 	'label'                   => &$GLOBALS['TL_LANG']['tl_user']['newspodcastsfeeds'],

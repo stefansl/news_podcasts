@@ -15,9 +15,6 @@
 $GLOBALS['TL_DCA']['tl_user']['palettes']['extend'] = str_replace('newsfeedp;', 'newsfeedp,newspodcastsfeeds,newspodcastsfeedp;', $GLOBALS['TL_DCA']['tl_user']['palettes']['extend']);
 $GLOBALS['TL_DCA']['tl_user']['palettes']['custom'] = str_replace('newsfeedp;', 'newsfeedp,newspodcastsfeeds,newspodcastsfeedp;', $GLOBALS['TL_DCA']['tl_user']['palettes']['custom']);
 
-
-
-
 $GLOBALS['TL_DCA']['tl_user']['fields']['newspodcastsfeeds'] = array
 (
 	'label'                   => &$GLOBALS['TL_LANG']['tl_user']['newspodcastsfeeds'],
