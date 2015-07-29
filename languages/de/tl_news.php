@@ -8,12 +8,12 @@
  *
  * @license http://www.gnu.org/licenses/lgpl-3.0.html LGPL
  *
- * last-updated: 2015-07-20T16:07:45+02:00
+ * last-updated: 2015-07-20T16:16:29+02:00
  */
-
 
 $GLOBALS['TL_LANG']['tl_news']['addPodcast']['0'] = 'Podcast hinzufügen';
 $GLOBALS['TL_LANG']['tl_news']['addPodcast']['1'] = 'Dem Nachrichten-Beitrag einen Podcast hinzufügen.';
 $GLOBALS['TL_LANG']['tl_news']['podcast']['0']    = 'Podcast-Datei';
 $GLOBALS['TL_LANG']['tl_news']['podcast']['1']    = 'Wählen Sie eine Podcast-Datei aus dem Filesystem aus.';
+$GLOBALS['TL_LANG']['tl_news']['podcast_legend']  = 'Podcast';
 

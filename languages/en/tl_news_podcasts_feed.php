@@ -12,7 +12,7 @@
  */
 
 $GLOBALS['TL_LANG']['tl_news_podcasts_feed']['alias']['0']         = 'Feed alias';
-$GLOBALS['TL_LANG']['tl_news_podcasts_feed']['alias']['1']         = 'Here you can enter a unique filename (without extension). The XML feed file will be auto-generated in	the share directory of your Contao installation, e.g. as share/podcast.xml.';
+$GLOBALS['TL_LANG']['tl_news_podcasts_feed']['alias']['1']         = 'Here you can enter a unique filename (without extension). The XML feed file will be auto-generated in the share directory of your Contao installation, e.g. as share/podcast.xml.';
 $GLOBALS['TL_LANG']['tl_news_podcasts_feed']['archives']['0']      = 'News archives';
 $GLOBALS['TL_LANG']['tl_news_podcasts_feed']['archives']['1']      = 'Here you can choose the news archives to be included in the feed.';
 $GLOBALS['TL_LANG']['tl_news_podcasts_feed']['archives_legend']    = 'News archives';
@@ -38,9 +38,9 @@ $GLOBALS['TL_LANG']['tl_news_podcasts_feed']['email']['1']         = 'The owner\
 $GLOBALS['TL_LANG']['tl_news_podcasts_feed']['feedBase']['0']      = 'Base URL';
 $GLOBALS['TL_LANG']['tl_news_podcasts_feed']['feedBase']['1']      = 'Please enter the base URL with protocol (e.g. http://).';
 $GLOBALS['TL_LANG']['tl_news_podcasts_feed']['image']['0']         = 'Image for iTunes';
-$GLOBALS['TL_LANG']['tl_news_podcasts_feed']['image']['1']         = 'Points to the artwork for your podcast. Cover art must be in the JPEG or PNG file formats and in the	RGB color space with a minimum size of 1400 x 1400 pixels and a maximum size of 3000 x 3000 pixels.';
+$GLOBALS['TL_LANG']['tl_news_podcasts_feed']['image']['1']         = 'Points to the artwork for your podcast. Cover art must be in the JPEG or PNG file formats and in the RGB color space with a minimum size of 1400 x 1400 pixels and a maximum size of 3000 x 3000 pixels.';
 $GLOBALS['TL_LANG']['tl_news_podcasts_feed']['language']['0']      = 'Feed language';
-$GLOBALS['TL_LANG']['tl_news_podcasts_feed']['language']['1']      = 'Please enter the feed language according to the ISO-639 standard (e.g. en	or en-us).';
+$GLOBALS['TL_LANG']['tl_news_podcasts_feed']['language']['1']      = 'Please enter the feed language according to the ISO-639 standard (e.g. en or en-us).';
 $GLOBALS['TL_LANG']['tl_news_podcasts_feed']['maxItems']['0']      = 'Maximum number of items';
 $GLOBALS['TL_LANG']['tl_news_podcasts_feed']['maxItems']['1']      = 'Here you can limit the number of feed items. Set to 0 to export all.';
 $GLOBALS['TL_LANG']['tl_news_podcasts_feed']['new']['0']           = 'New podcast feed';
@@ -57,4 +57,5 @@ $GLOBALS['TL_LANG']['tl_news_podcasts_feed']['summary']['1']       = 'This shown
 $GLOBALS['TL_LANG']['tl_news_podcasts_feed']['title']['0']         = 'Title';
 $GLOBALS['TL_LANG']['tl_news_podcasts_feed']['title']['1']         = 'Please enter a feed title.';
 $GLOBALS['TL_LANG']['tl_news_podcasts_feed']['title_legend']       = 'Title and language';
+
 

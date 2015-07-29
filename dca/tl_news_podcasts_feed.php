@@ -299,19 +299,19 @@ class tl_news_podcasts_feed extends Backend
         }
 
         // Set the root IDs
-        if (!is_array($this->User->itunesfeeds) || empty($this->User->itunesfeeds))
+        if (!is_array($this->User->newspodcastsfeeds) || empty($this->User->newspodcastsfeeds))
         {
             $root = array(0);
         }
         else
         {
-            $root = $this->User->itunesfeeds;
+            $root = $this->User->newspodcastsfeeds;
         }
 
         $GLOBALS['TL_DCA']['tl_news_podcasts_feed']['list']['sorting']['root'] = $root;
 
         // Check permissions to add feeds
-        if (!$this->User->hasAccess('create', 'itunesfeedp'))
+        if (!$this->User->hasAccess('create', 'newspodcastsfeedp'))
         {
             $GLOBALS['TL_DCA']['tl_news_podcasts_feed']['config']['closed'] = true;
         }
@@ -335,44 +335,44 @@ class tl_news_podcasts_feed extends Backend
                         // Add permissions on user level
                         if ($this->User->inherit == 'custom' || !$this->User->groups[0])
                         {
-                            $objUser = $this->Database->prepare("SELECT itunesfeeds, itunesfeedp FROM tl_user WHERE id=?")
+                            $objUser = $this->Database->prepare("SELECT newspodcastsfeeds, newspodcastsfeedp FROM tl_user WHERE id=?")
                                 ->limit(1)
                                 ->execute($this->User->id);
 
-                            $arritunesfeedp = deserialize($objUser->itunesfeedp);
+                            $arrnewspodcastsfeedp = deserialize($objUser->newspodcastsfeedp);
 
-                            if (is_array($arritunesfeedp) && in_array('create', $arritunesfeedp))
+                            if (is_array($arrnewspodcastsfeedp) && in_array('create', $arrnewspodcastsfeedp))
                             {
-                                $arritunesfeeds = deserialize($objUser->itunesfeeds);
-                                $arritunesfeeds[] = Input::get('id');
+                                $arrnewspodcastsfeeds = deserialize($objUser->newspodcastsfeeds);
+                                $arrnewspodcastsfeeds[] = Input::get('id');
 
-                                $this->Database->prepare("UPDATE tl_user SET itunesfeeds=? WHERE id=?")
-                                    ->execute(serialize($arritunesfeeds), $this->User->id);
+                                $this->Database->prepare("UPDATE tl_user SET newspodcastsfeeds=? WHERE id=?")
+                                    ->execute(serialize($arrnewspodcastsfeeds), $this->User->id);
                             }
                         }
 
                         // Add permissions on group level
                         elseif ($this->User->groups[0] > 0)
                         {
-                            $objGroup = $this->Database->prepare("SELECT itunesfeeds, itunesfeedp FROM tl_user_group WHERE id=?")
+                            $objGroup = $this->Database->prepare("SELECT newspodcastsfeeds, newspodcastsfeedp FROM tl_user_group WHERE id=?")
                                 ->limit(1)
                                 ->execute($this->User->groups[0]);
 
-                            $arritunesfeedp = deserialize($objGroup->itunesfeedp);
+                            $arrnewspodcastsfeedp = deserialize($objGroup->newspodcastsfeedp);
 
-                            if (is_array($arritunesfeedp) && in_array('create', $arritunesfeedp))
+                            if (is_array($arrnewspodcastsfeedp) && in_array('create', $arrnewspodcastsfeedp))
                             {
-                                $arritunesfeeds = deserialize($objGroup->itunesfeeds);
-                                $arritunesfeeds[] = Input::get('id');
+                                $arrnewspodcastsfeeds = deserialize($objGroup->newspodcastsfeeds);
+                                $arrnewspodcastsfeeds[] = Input::get('id');
 
-                                $this->Database->prepare("UPDATE tl_user_group SET itunesfeeds=? WHERE id=?")
-                                    ->execute(serialize($arritunesfeeds), $this->User->groups[0]);
+                                $this->Database->prepare("UPDATE tl_user_group SET newspodcastsfeeds=? WHERE id=?")
+                                    ->execute(serialize($arrnewspodcastsfeeds), $this->User->groups[0]);
                             }
                         }
 
                         // Add new element to the user object
                         $root[] = Input::get('id');
-                        $this->User->itunesfeeds = $root;
+                        $this->User->newspodcastsfeeds = $root;
                     }
                 }
             // No break;
@@ -380,9 +380,9 @@ class tl_news_podcasts_feed extends Backend
             case 'copy':
             case 'delete':
             case 'show':
-                if (!in_array(Input::get('id'), $root) || (Input::get('act') == 'delete' && !$this->User->hasAccess('delete', 'itunesfeedp')))
+                if (!in_array(Input::get('id'), $root) || (Input::get('act') == 'delete' && !$this->User->hasAccess('delete', 'newspodcastsfeedp')))
                 {
-                    $this->log('Not enough permissions to '.Input::get('act').' itunes feed ID "'.Input::get('id').'"', __METHOD__, TL_ERROR);
+                    $this->log('Not enough permissions to '.Input::get('act').' podcast feed ID "'.Input::get('id').'"', __METHOD__, TL_ERROR);
                     $this->redirect('contao/main.php?act=error');
                 }
                 break;
@@ -391,7 +391,7 @@ class tl_news_podcasts_feed extends Backend
             case 'deleteAll':
             case 'overrideAll':
                 $session = $this->Session->getData();
-                if (Input::get('act') == 'deleteAll' && !$this->User->hasAccess('delete', 'itunesfeedp'))
+                if (Input::get('act') == 'deleteAll' && !$this->User->hasAccess('delete', 'newspodcastsfeedp'))
                 {
                     $session['CURRENT']['IDS'] = array();
                 }
@@ -405,7 +405,7 @@ class tl_news_podcasts_feed extends Backend
             default:
                 if (strlen(Input::get('act')))
                 {
-                    $this->log('Not enough permissions to '.Input::get('act').' itunes feeds', __METHOD__, TL_ERROR);
+                    $this->log('Not enough permissions to '.Input::get('act').' podcast feeds', __METHOD__, TL_ERROR);
                     $this->redirect('contao/main.php?act=error');
                 }
                 break;
@@ -418,7 +418,7 @@ class tl_news_podcasts_feed extends Backend
      */
     public function generateFeed()
     {
-        $session = $this->Session->get('itunes_feed_updater');
+        $session = $this->Session->get('podcasts_feed_updater');
 
         if (!is_array($session) || empty($session))
         {
@@ -434,7 +434,7 @@ class tl_news_podcasts_feed extends Backend
 
 
 
-        $this->Session->set('itunes_feed_updater', null);
+        $this->Session->set('podcasts_feed_updater', null);
     }
 
 
@@ -454,9 +454,9 @@ class tl_news_podcasts_feed extends Backend
         }
 
         // Store the ID in the session
-        $session = $this->Session->get('itunes_feed_updater');
+        $session = $this->Session->get('podcasts_feed_updater');
         $session[] = $dc->id;
-        $this->Session->set('itunes_feed_updater', array_unique($session));
+        $this->Session->set('podcasts_feed_updater', array_unique($session));
     }
 
 
@@ -472,7 +472,7 @@ class tl_news_podcasts_feed extends Backend
         }
         else
         {
-            $objArchive = NewsArchiveModel::findMultipleByIds($this->User->itunes);
+            $objArchive = NewsArchiveModel::findMultipleByIds($this->User->news);
         }
 
         $return = array();

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" version="1.2">
-  <file datatype="php" date="2015-07-29T11:35:17+02:00" original="tl_news_podcasts_feed" source-language="en" target-language="de">
+  <file datatype="php" date="2015-07-29T12:20:22+02:00" original="tl_news_podcasts_feed" source-language="en" target-language="de">
     <body>
       <trans-unit id="tl_news_podcasts_feed.title.0">
         <source>Title</source>
@@ -15,7 +15,7 @@
         <target>Feed alias</target>
       </trans-unit>
       <trans-unit id="tl_news_podcasts_feed.alias.1">
-        <source>Here you can enter a unique filename (without extension). The XML feed file will be auto-generated in	the share directory of your Contao installation, e.g. as share/podcast.xml.</source>
+        <source>Here you can enter a unique filename (without extension). The XML feed file will be auto-generated in the share directory of your Contao installation, e.g. as share/podcast.xml.</source>
         <target>Hier können Sie einen eindeutigen Dateinamen (ohne Endung) eingeben. Die XML-Datei wird automatisch im share-Ordner Ihrer Contao-Installation erstellt, z.B. als share/.podcast.xml</target>
       </trans-unit>
       <trans-unit id="tl_news_podcasts_feed.language.0">
@@ -23,7 +23,7 @@
         <target>Feed Sprache</target>
       </trans-unit>
       <trans-unit id="tl_news_podcasts_feed.language.1">
-        <source>Please enter the feed language according to the ISO-639 standard (e.g. en	or en-us).</source>
+        <source>Please enter the feed language according to the ISO-639 standard (e.g. en or en-us).</source>
         <target>Bitte geben Sie die Sprache der Seite gemäß des ISO-639 Standards ein (z.B. de-de).</target>
       </trans-unit>
       <trans-unit id="tl_news_podcasts_feed.subtitle.0">
@@ -71,7 +71,7 @@
         <target>Podcast-Bild</target>
       </trans-unit>
       <trans-unit id="tl_news_podcasts_feed.image.1">
-        <source>Points to the artwork for your podcast. Cover art must be in the JPEG or PNG file formats and in the	RGB color space with a minimum size of 1400 x 1400 pixels and a maximum size of 3000 x 3000 pixels.</source>
+        <source>Points to the artwork for your podcast. Cover art must be in the JPEG or PNG file formats and in the RGB color space with a minimum size of 1400 x 1400 pixels and a maximum size of 3000 x 3000 pixels.</source>
         <target>Gibt die Grafik für den Podcast an. Die Covergrafik muss eine JPEG- oder PNG-Datei im RGB-Farbformat mit einer Größe von mindestens 1400 x 1400 Pixeln und höchstens 3000 x 3000 Pixeln sein.</target>
       </trans-unit>
       <trans-unit id="tl_news_podcasts_feed.author.0">

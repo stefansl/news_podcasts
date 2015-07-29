@@ -13,3 +13,4 @@
 
 $GLOBALS['TL_LANG']['tl_news']['addPodcast'] = array( 'Add Podcast', 'Add one podcast to the news item' );
 $GLOBALS['TL_LANG']['tl_news']['podcast']    = array( 'Podcast', 'Choose one podcast file from the file system' );
+$GLOBALS['TL_LANG']['tl_news']['podcast_legend']       = 'Podcast';

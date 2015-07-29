@@ -8,7 +8,7 @@
  *
  * @license http://www.gnu.org/licenses/lgpl-3.0.html LGPL
  *
- * last-updated: 2015-07-20T16:07:45+02:00
+ * last-updated: 2015-07-29T11:35:17+02:00
  */
 
 $GLOBALS['TL_LANG']['tl_news_podcasts_feed']['alias']['0']         = 'Feed alias';
@@ -47,6 +47,7 @@ $GLOBALS['TL_LANG']['tl_news_podcasts_feed']['new']['0']           = 'Neuer Podc
 $GLOBALS['TL_LANG']['tl_news_podcasts_feed']['new']['1']           = 'Einen neuen Feed erstellen';
 $GLOBALS['TL_LANG']['tl_news_podcasts_feed']['owner']['0']         = 'Besitzer';
 $GLOBALS['TL_LANG']['tl_news_podcasts_feed']['owner']['1']         = 'enthält Informationen zum Eigentümer des Podcasts, die für die Kommunikation über den Podcast verwendet werden können. Diese Angaben werden nicht im iTunes Store angezeigt.';
+$GLOBALS['TL_LANG']['tl_news_podcasts_feed']['podcast_legend']     = 'Podcast';
 $GLOBALS['TL_LANG']['tl_news_podcasts_feed']['show']['0']          = 'Feed-Details';
 $GLOBALS['TL_LANG']['tl_news_podcasts_feed']['show']['1']          = 'Die Details des Feeds ID %s anzeigen';
 $GLOBALS['TL_LANG']['tl_news_podcasts_feed']['source_teaser']      = 'Teasertexte';

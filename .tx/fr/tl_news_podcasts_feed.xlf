@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" version="1.2">
-  <file datatype="php" date="2015-07-29T11:40:00+02:00" original="tl_news_podcasts_feed" source-language="en" target-language="fr">
+  <file datatype="php" date="2015-07-29T12:24:02+02:00" original="tl_news_podcasts_feed" source-language="en" target-language="fr">
     <body>
       <trans-unit id="tl_news_podcasts_feed.title.0">
         <source>Title</source>
@@ -12,13 +12,13 @@
         <source>Feed alias</source>
       </trans-unit>
       <trans-unit id="tl_news_podcasts_feed.alias.1">
-        <source>Here you can enter a unique filename (without extension). The XML feed file will be auto-generated in	the share directory of your Contao installation, e.g. as share/podcast.xml.</source>
+        <source>Here you can enter a unique filename (without extension). The XML feed file will be auto-generated in the share directory of your Contao installation, e.g. as share/podcast.xml.</source>
       </trans-unit>
       <trans-unit id="tl_news_podcasts_feed.language.0">
         <source>Feed language</source>
       </trans-unit>
       <trans-unit id="tl_news_podcasts_feed.language.1">
-        <source>Please enter the feed language according to the ISO-639 standard (e.g. en	or en-us).</source>
+        <source>Please enter the feed language according to the ISO-639 standard (e.g. en or en-us).</source>
       </trans-unit>
       <trans-unit id="tl_news_podcasts_feed.subtitle.0">
         <source>Subtitle</source>
@@ -54,7 +54,7 @@
         <source>Image for iTunes</source>
       </trans-unit>
       <trans-unit id="tl_news_podcasts_feed.image.1">
-        <source>Points to the artwork for your podcast. Cover art must be in the JPEG or PNG file formats and in the	RGB color space with a minimum size of 1400 x 1400 pixels and a maximum size of 3000 x 3000 pixels.</source>
+        <source>Points to the artwork for your podcast. Cover art must be in the JPEG or PNG file formats and in the RGB color space with a minimum size of 1400 x 1400 pixels and a maximum size of 3000 x 3000 pixels.</source>
       </trans-unit>
       <trans-unit id="tl_news_podcasts_feed.author.0">
         <source>Author</source>
