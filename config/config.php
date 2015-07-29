@@ -23,3 +23,9 @@ $GLOBALS['TL_CRON']['daily'][] = array( 'NewsPodcasts', 'generateFeeds' );
  * Register hook to add news items to the indexer
  */
 $GLOBALS['TL_HOOKS']['generateXmlFiles'][] = array( 'NewsPodcasts', 'generateFeeds' );
+
+/**
+ * Add permissions
+ */
+$GLOBALS['TL_PERMISSIONS'][] = 'newspodcastsfeeds';
+$GLOBALS['TL_PERMISSIONS'][] = 'newspodcastsfeedp';
