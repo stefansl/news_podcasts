@@ -11,9 +11,8 @@
  * last-updated: 2015-07-20T16:07:45+02:00
  */
 
-
 $GLOBALS['TL_LANG']['tl_news_podcasts_feed']['alias']['0']         = 'Feed alias';
-$GLOBALS['TL_LANG']['tl_news_podcasts_feed']['alias']['1']         = 'Hier können Sie einen eindeutigen Dateinamen (ohne Endung) eingeben. Die XML-Datei wird automatisch im &lt;em&gt;share&lt;/em&gt;-Ordner Ihrer Contao-Installation erstellt, z.B. als &lt;em&gt;share/name.xml&lt;/em&gt;.';
+$GLOBALS['TL_LANG']['tl_news_podcasts_feed']['alias']['1']         = 'Hier können Sie einen eindeutigen Dateinamen (ohne Endung) eingeben. Die XML-Datei wird automatisch im share-Ordner Ihrer Contao-Installation erstellt, z.B. als share/.podcast.xml';
 $GLOBALS['TL_LANG']['tl_news_podcasts_feed']['archives']['0']      = 'News Archiv';
 $GLOBALS['TL_LANG']['tl_news_podcasts_feed']['archives']['1']      = 'Hier legen Sie fest, welche Nachrichtenarchive in dem Feed enthalten sind.';
 $GLOBALS['TL_LANG']['tl_news_podcasts_feed']['archives_legend']    = 'News Archive';
@@ -37,11 +36,11 @@ $GLOBALS['TL_LANG']['tl_news_podcasts_feed']['edit']['1']          = 'Feed ID %s
 $GLOBALS['TL_LANG']['tl_news_podcasts_feed']['email']['0']         = 'E-Mail';
 $GLOBALS['TL_LANG']['tl_news_podcasts_feed']['email']['1']         = 'Die E-Mail-Adresse des Podcast-Besitzers';
 $GLOBALS['TL_LANG']['tl_news_podcasts_feed']['feedBase']['0']      = 'Basis URL';
-$GLOBALS['TL_LANG']['tl_news_podcasts_feed']['feedBase']['1']      = 'Bitte geben Sie die Basis-URL mit Protokoll (z.B. &lt;em&gt;http://&lt;/em&gt;) ein.';
+$GLOBALS['TL_LANG']['tl_news_podcasts_feed']['feedBase']['1']      = 'Bitte geben Sie die Basis-URL mit Protokoll (z.B. http://) ein.';
 $GLOBALS['TL_LANG']['tl_news_podcasts_feed']['image']['0']         = 'Podcast-Bild';
-$GLOBALS['TL_LANG']['tl_news_podcasts_feed']['image']['1']         = 'gibt die Grafik für den Podcast an, und zwar über die im &lt;a href&gt; Attribut angegebene URL‑Adresse. Die Covergrafik muss eine JPEG- oder PNG-Datei im RGB-Farbformat mit einer Größe von mindestens 1400 x 1400 Pixeln und höchstens 3000 x 3000 Pixeln sein. Diese Vorgaben weichen von denen der standardmäßigen Angaben für das RSS-Tag „image“ ab.';
+$GLOBALS['TL_LANG']['tl_news_podcasts_feed']['image']['1']         = 'Gibt die Grafik für den Podcast an. Die Covergrafik muss eine JPEG- oder PNG-Datei im RGB-Farbformat mit einer Größe von mindestens 1400 x 1400 Pixeln und höchstens 3000 x 3000 Pixeln sein.';
 $GLOBALS['TL_LANG']['tl_news_podcasts_feed']['language']['0']      = 'Feed Sprache';
-$GLOBALS['TL_LANG']['tl_news_podcasts_feed']['language']['1']      = 'Bitte geben Sie die Sprache der Seite gemäß des ISO-639 Standards ein (z.B. &lt;em&gt;de&lt;/em&gt;, &lt;em&gt;de-ch&lt;/em&gt;).';
+$GLOBALS['TL_LANG']['tl_news_podcasts_feed']['language']['1']      = 'Bitte geben Sie die Sprache der Seite gemäß des ISO-639 Standards ein (z.B. de-de).';
 $GLOBALS['TL_LANG']['tl_news_podcasts_feed']['maxItems']['0']      = 'Maximale Anzahl an Beiträgen';
 $GLOBALS['TL_LANG']['tl_news_podcasts_feed']['maxItems']['1']      = 'Hier können Sie die Anzahl der Beiträge limitieren. Geben Sie 0 ein, um alle zu exportieren.';
 $GLOBALS['TL_LANG']['tl_news_podcasts_feed']['new']['0']           = 'Neuer Podcast-Feed';
