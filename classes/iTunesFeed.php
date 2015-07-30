@@ -31,12 +31,17 @@ class iTunesFeed extends \Feed
         $xml .= '<rss xmlns:itunes="http://www.itunes.com/dtds/podcast-1.0.dtd" version="2.0">';
         $xml .= '<channel>';
         $xml .= '<title>' . specialchars( $this->title ) . '</title>';
+        $xml .= '<language>' . $this->language . '</language>';
+        $xml .= '<copyright>&#x2117; &amp; &#xA9; ' . date('Y') . ' ' . $this->owner . '</copyright>';
+
+        // Todo: get from dca
+        $xml .= '<itunes:subtitle>' . specialchars( $this->title ) . '</itunes:subtitle>';
+        $xml .= '<itunes:author>' . $this->owner . '</itunes:author>';
+        $xml .= '<itunes:summary>' . specialchars( $this->description ) . '</itunes:summary>';
         $xml .= '<description>' . specialchars( $this->description ) . '</description>';
         $xml .= '<link>' . specialchars( $this->link ) . '</link>';
-        $xml .= '<language>' . $this->language . '</language>';
         $xml .= '<pubDate>' . date( 'r', $this->published ) . '</pubDate>';
-        $xml .= '<generator>Contao Open Source CMS</generator>';
-
+        $xml .= '<generator>Contao Open Source CMS - News Podcasts</generator>';
         $xml .= '<itunes:owner>';
         $xml .= '<itunes:name>' . $this->owner . '</itunes:name>';
         $xml .= '<itunes:email>' . $this->email . '</itunes:email>';
@@ -50,6 +55,8 @@ class iTunesFeed extends \Feed
             $xml .= '<item>';
             $xml .= '<title>' . specialchars( strip_tags( $objItem->title ) ) . '</title>';
             $xml .= '<author>' . specialchars( strip_tags( $objItem->author ) ) . '</author>';
+            $xml .= '<itunes:author>' . specialchars( strip_tags( $objItem->author ) ) . '</itunes:author>';
+            $xml .= '<itunes:subtitle>' . specialchars( strip_tags( $objItem->subheadline ) ) . '</itunes:subtitle>';
             $xml .= '<description><![CDATA[' . preg_replace( '/[\n\r]+/', ' ', $objItem->description ) . ']]></description>';
             $xml .= '<link>' . specialchars( $objItem->link ) . '</link>';
             $xml .= '<pubDate>' . date( 'r', $objItem->published ) . '</pubDate>';

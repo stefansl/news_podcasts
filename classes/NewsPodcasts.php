@@ -7,6 +7,7 @@
  *
  * @package   news_podcasts
  * @author    Stefan Schulz-Lauterbach
+ * @author    Samuel Heer
  * @license   GNU/LGPL
  * @copyright CLICKPRESS Internetagentur 2015
  */
@@ -191,7 +192,8 @@ class NewsPodcasts extends \Frontend
                 $objItem = new \FeedItem();
 
 
-                $objItem->title = $objPodcasts->headline;
+                $objItem->headline = $objPodcasts->headline;
+                $objItem->subheadline = $objPodcasts->subheadline;
                 $objItem->link  = $strLink . sprintf( $strUrl, (($objPodcasts->alias != '' && !$GLOBALS['TL_CONFIG']['disableAlias']) ? $objPodcasts->alias : $objPodcasts->id) );
 
                 $objItem->published = $objPodcasts->date;
