@@ -98,7 +98,7 @@ $GLOBALS['TL_DCA']['tl_news_podcasts_feed'] = array
     // Palettes
     'palettes' => array
     (
-        'default'                     => '{title_legend},title,alias,language,format;{description_legend},description,category;{author_legend},owner,email,image,author,copyright;{archives_legend},archives;{config_legend},maxItems,feedBase'
+        'default'                     => '{title_legend},title,alias,language;{description_legend},description,category;{author_legend},owner,email,image,author,copyright;{archives_legend},archives;{config_legend},maxItems,feedBase'
     ),
 
     // Fields
@@ -142,18 +142,6 @@ $GLOBALS['TL_DCA']['tl_news_podcasts_feed'] = array
             'filter'                  => true,
             'inputType'               => 'text',
             'eval'                    => array('mandatory'=>true, 'maxlength'=>32, 'tl_class'=>'w50'),
-            'sql'                     => "varchar(32) NOT NULL default ''"
-        ),
-        'format' => array
-        (
-            'label'                   => &$GLOBALS['TL_LANG']['tl_news_podcasts_feed']['format'],
-            'default'                 => 'text',
-            'exclude'                 => true,
-            'filter'                  => true,
-            'inputType'               => 'select',
-            //'options_callback'        => array('tl_news_podcasts_feed', 'getRssType'),
-            'options'				  => array('itunes'),
-            'eval'                    => array('submitOnChange'=>true, 'tl_class'=>'w50'),
             'sql'                     => "varchar(32) NOT NULL default ''"
         ),
         'subtitle' => array

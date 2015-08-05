@@ -114,20 +114,7 @@ class NewsPodcasts extends \Frontend
             return;
         }
 
-        switch ( $arrFeed['format'] ) {
-            case 'rss':
-                $strType = 'generateRss';
-                break;
-
-            case 'atom':
-                $strType = 'generateAtom';
-                break;
-
-            case 'itunes':
-                $strType = 'generateItunes';
-                break;
-        }
-
+        $strType = 'generateItunes';
 
         $strLink = $arrFeed['feedBase'] ?: \Environment::get( 'base' );
         $strFile = $arrFeed['feedName'];
@@ -143,14 +130,13 @@ class NewsPodcasts extends \Frontend
         $objFeed->published   = $arrFeed['tstamp'];
 
         //Add Feed Image
-        if ( $arrFeed['format'] == 'itunes' ) {
-            $objFile = \FilesModel::findByUuid( $arrFeed['image'] );
 
-            if ( $objFile !== null ) {
-                $objFeed->imageUrl = \Environment::get( 'base' ) . $objFile->path;
-            }
+        $objFile = \FilesModel::findByUuid( $arrFeed['image'] );
 
+        if ( $objFile !== null ) {
+            $objFeed->imageUrl = \Environment::get( 'base' ) . $objFile->path;
         }
+
 
 
         // Get the items
