@@ -18,6 +18,8 @@
  */
 namespace CLICKPRESS;
 
+use Contao\UserModel;
+
 
 /**
  * Class NewsPodcasts
@@ -197,7 +199,9 @@ class NewsPodcasts extends \Frontend
                 $objItem->link  = $strLink . sprintf( $strUrl, (($objPodcasts->alias != '' && !$GLOBALS['TL_CONFIG']['disableAlias']) ? $objPodcasts->alias : $objPodcasts->id) );
 
                 $objItem->published = $objPodcasts->date;
-                $objItem->author    = $arrFeed['author'];
+
+                $objAuthor = $objPodcasts->getRelated('author');
+                $objItem->author    = $objAuthor->name;
 
                 $objItem->description = $objPodcasts->teaser;
 
