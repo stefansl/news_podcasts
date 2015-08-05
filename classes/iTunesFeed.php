@@ -56,11 +56,11 @@ class iTunesFeed extends \Feed
             $xml .= '<title>' . specialchars( strip_tags( $objItem->title ) ) . '</title>';
             $xml .= '<author>' . specialchars( strip_tags( $objItem->author ) ) . '</author>';
             $xml .= '<itunes:author>' . specialchars( strip_tags( $objItem->author ) ) . '</itunes:author>';
-            $xml .= '<itunes:subtitle>' . specialchars( strip_tags( $objItem->subheadline ) ) . '</itunes:subtitle>';
             $xml .= '<description><![CDATA[' . preg_replace( '/[\n\r]+/', ' ', $objItem->description ) . ']]></description>';
             $xml .= '<link>' . specialchars( $objItem->link ) . '</link>';
             $xml .= '<pubDate>' . date( 'r', $objItem->published ) . '</pubDate>';
-            $xml .= '<itunes:subtitle><![CDATA[' . preg_replace( '/[\n\r]+/', ' ', $objItem->description ) . ']]></itunes:subtitle>';
+            $xml .= '<itunes:subtitle><![CDATA[' . preg_replace( '/[\n\r]+/', ' ', $objItem->headline ) . ']]></itunes:subtitle>';
+            $xml .= '<itunes:summary><![CDATA[' . preg_replace( '/[\n\r]+/', ' ', $objItem->description ) . ']]></itunes:summary>';
             $xml .= '<itunes:duration>' . $objItem->duration . '</itunes:duration>';
 
             // Add the GUID

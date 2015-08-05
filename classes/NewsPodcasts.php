@@ -195,7 +195,7 @@ class NewsPodcasts extends \Frontend
 
 
                 $objItem->headline = $objPodcasts->headline;
-                $objItem->subheadline = $objPodcasts->subheadline;
+                $objItem->subheadline = ($objPodcasts->subheadline !== null ) ? $objPodcasts->subheadline : $objPodcasts->description;
                 $objItem->link  = $strLink . sprintf( $strUrl, (($objPodcasts->alias != '' && !$GLOBALS['TL_CONFIG']['disableAlias']) ? $objPodcasts->alias : $objPodcasts->id) );
 
                 $objItem->published = $objPodcasts->date;
