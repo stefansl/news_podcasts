@@ -53,7 +53,7 @@ class iTunesFeed extends \Feed
 
         foreach ( $this->arrItems as $objItem ) {
             $xml .= '<item>';
-            $xml .= '<title>' . specialchars( strip_tags( $objItem->title ) ) . '</title>';
+            $xml .= '<title>' . specialchars( strip_tags( $objItem->headline ) ) . '</title>';
             $xml .= '<author>' . specialchars( strip_tags( $objItem->author ) ) . '</author>';
             $xml .= '<itunes:author>' . specialchars( strip_tags( $objItem->author ) ) . '</itunes:author>';
             $xml .= '<description><![CDATA[' . preg_replace( '/[\n\r]+/', ' ', $objItem->description ) . ']]></description>';
