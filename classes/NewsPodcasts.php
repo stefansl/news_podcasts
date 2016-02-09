@@ -215,7 +215,7 @@ class NewsPodcasts extends \Frontend
                         $mp3file = new GetMp3Duration( TL_ROOT . '/' . $objFile->path );
                         if ($this->checkMp3InfoInstalled()) {
 
-                            $shell_command = 'mp3info -p "%m" ' . escapeshellarg( TL_ROOT . '/' . $objFile->path );
+                            $shell_command = 'mp3info -p "%S" ' . escapeshellarg( TL_ROOT . '/' . $objFile->path );
                             $duration      = shell_exec( $shell_command );
 
                         } else {
