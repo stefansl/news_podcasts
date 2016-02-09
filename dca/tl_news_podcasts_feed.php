@@ -98,7 +98,7 @@ $GLOBALS['TL_DCA']['tl_news_podcasts_feed'] = array
     // Palettes
     'palettes' => array
     (
-        'default'                     => '{title_legend},title,alias,language;{description_legend},description,category;{author_legend},owner,email,image,author,copyright;{archives_legend},archives;{config_legend},maxItems,feedBase'
+        'default'                     => '{title_legend},title,alias,language;{description_legend},description,subtitle,category;{author_legend},owner,email,image,author,copyright;{archives_legend},archives;{config_legend},maxItems,feedBase'
     ),
 
     // Fields
