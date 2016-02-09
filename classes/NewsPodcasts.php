@@ -41,14 +41,14 @@ class NewsPodcasts extends \Frontend
 
         $objFeed = $blnIsFeedId ? \NewsModel::findByPk( $intId ) : \NewsArchiveModel::findByArchive( $intId );
 
-        if ( $objFeed === null ) {
+        if ($objFeed === null) {
             return;
         }
 
         $objFeed->feedName = $objFeed->alias ?: 'itunes' . $objFeed->id;
 
         // Delete XML file
-        if ( \Input::get( 'act' ) == 'delete' ) {
+        if (\Input::get( 'act' ) == 'delete') {
             $this->import( 'Files' );
             $this->Files->delete( $objFeed->feedName . '.xml' );
         } // Update XML file
@@ -69,8 +69,8 @@ class NewsPodcasts extends \Frontend
 
         $objFeed = \NewsPodcastsFeedModel::findAll();
 
-        if ( $objFeed !== null ) {
-            while ( $objFeed->next() ) {
+        if ($objFeed !== null) {
+            while ($objFeed->next()) {
                 $objFeed->feedName = $objFeed->alias ?: 'itunes' . $objFeed->id;
                 $this->generateFiles( $objFeed->row() );
                 $this->log( 'Generated podcast feed "' . $objFeed->feedName . '.xml"', __METHOD__, TL_CRON );
@@ -81,21 +81,20 @@ class NewsPodcasts extends \Frontend
 
     /**
      * Generate all feeds including a certain archive
+     *
      * @param integer
      */
-    public function generateFeedsByArchive($intId)
+    public function generateFeedsByArchive( $intId )
     {
-        $objFeed = \NewsPodcastsFeedModel::findByArchive($intId);
+        $objFeed = \NewsPodcastsFeedModel::findByArchive( $intId );
 
-        if ($objFeed !== null)
-        {
-            while ($objFeed->next())
-            {
+        if ($objFeed !== null) {
+            while ($objFeed->next()) {
                 $objFeed->feedName = $objFeed->alias ?: 'itunes' . $objFeed->id;
 
                 // Update the XML file
-                $this->generateFiles($objFeed->row());
-                $this->log('Generated podcast feed "' . $objFeed->feedName . '.xml"', __METHOD__, TL_CRON);
+                $this->generateFiles( $objFeed->row() );
+                $this->log( 'Generated podcast feed "' . $objFeed->feedName . '.xml"', __METHOD__, TL_CRON );
             }
         }
     }
@@ -110,7 +109,7 @@ class NewsPodcasts extends \Frontend
     {
         $arrArchives = deserialize( $arrFeed['archives'] );
 
-        if ( !is_array( $arrArchives ) || empty($arrArchives) ) {
+        if (!is_array( $arrArchives ) || empty($arrArchives)) {
             return;
         }
 
@@ -126,7 +125,7 @@ class NewsPodcasts extends \Frontend
         $objFeed->description = $arrFeed['description'];
         $objFeed->explicit    = $arrFeed['explicit'];
         $objFeed->language    = $arrFeed['language'];
-        $objFeed->author       = $arrFeed['author'];
+        $objFeed->author      = $arrFeed['author'];
         $objFeed->owner       = $arrFeed['owner'];
         $objFeed->email       = $arrFeed['email'];
         $objFeed->category    = $arrFeed['category'];
@@ -137,46 +136,49 @@ class NewsPodcasts extends \Frontend
 
         $objFile = \FilesModel::findByUuid( $arrFeed['image'] );
 
-        if ( $objFile !== null ) {
+        if ($objFile !== null) {
             $objFeed->imageUrl = \Environment::get( 'base' ) . $objFile->path;
         }
 
 
-
         // Get the items
-        if ( $arrFeed['maxItems'] > 0 ) {
-            $objPodcasts = \NewsModel::findPublishedByPids( $arrArchives, null, $arrFeed['maxItems'], null, array( 'column' => 'addPodcast', 'value' => 1 ) );
+        if ($arrFeed['maxItems'] > 0) {
+            $objPodcasts = \NewsModel::findPublishedByPids( $arrArchives, null, $arrFeed['maxItems'], null,
+                array( 'column' => 'addPodcast', 'value' => 1 ) );
         } else {
-            $objPodcasts = \NewsModel::findPublishedByPids( $arrArchives, null, null, null, array( 'column' => 'addPodcast', 'value' => 1 ) );
+            $objPodcasts = \NewsModel::findPublishedByPids( $arrArchives, null, null, null,
+                array( 'column' => 'addPodcast', 'value' => 1 ) );
         }
 
 
         // Parse the items
-        if ( $objPodcasts !== null ) {
+        if ($objPodcasts !== null) {
             $arrUrls = array();
 
-            while ( $objPodcasts->next() ) {
+            while ($objPodcasts->next()) {
                 $jumpTo = $objPodcasts->getRelated( 'pid' )->jumpTo;
 
                 // No jumpTo page set (see #4784)
-                if ( !$jumpTo ) {
+                if (!$jumpTo) {
                     continue;
                 }
 
                 // Get the jumpTo URL
-                if ( !isset($arrUrls[$jumpTo]) ) {
+                if (!isset($arrUrls[$jumpTo])) {
                     $objParent = \PageModel::findWithDetails( $jumpTo );
 
                     // A jumpTo page is set but does no longer exist (see #5781)
-                    if ( $objParent === null ) {
+                    if ($objParent === null) {
                         $arrUrls[$jumpTo] = false;
                     } else {
-                        $arrUrls[$jumpTo] = $this->generateFrontendUrl( $objParent->row(), (($GLOBALS['TL_CONFIG']['useAutoItem'] && !$GLOBALS['TL_CONFIG']['disableAlias']) ? '/%s' : '/items/%s'), $objParent->language );
+                        $arrUrls[$jumpTo] = $this->generateFrontendUrl( $objParent->row(),
+                            (($GLOBALS['TL_CONFIG']['useAutoItem'] && !$GLOBALS['TL_CONFIG']['disableAlias']) ? '/%s' : '/items/%s'),
+                            $objParent->language );
                     }
                 }
 
                 // Skip the event if it requires a jumpTo URL but there is none
-                if ( $arrUrls[$jumpTo] === false && $objPodcasts->source == 'default' ) {
+                if ($arrUrls[$jumpTo] === false && $objPodcasts->source == 'default') {
                     continue;
                 }
 
@@ -184,13 +186,14 @@ class NewsPodcasts extends \Frontend
                 $objItem = new \FeedItem();
 
 
-                $objItem->headline = $objPodcasts->headline;
-                $objItem->subheadline = ($objPodcasts->subheadline !== null ) ? $objPodcasts->subheadline : $objPodcasts->description;
-                $objItem->link  = $strLink . sprintf( $strUrl, (($objPodcasts->alias != '' && !$GLOBALS['TL_CONFIG']['disableAlias']) ? $objPodcasts->alias : $objPodcasts->id) );
+                $objItem->headline    = $objPodcasts->headline;
+                $objItem->subheadline = ($objPodcasts->subheadline !== null) ? $objPodcasts->subheadline : $objPodcasts->description;
+                $objItem->link        = $strLink . sprintf( $strUrl,
+                        (($objPodcasts->alias != '' && !$GLOBALS['TL_CONFIG']['disableAlias']) ? $objPodcasts->alias : $objPodcasts->id) );
 
-                $objItem->published = $objPodcasts->date;
-                $objAuthor = $objPodcasts->getRelated('author');
-                $objItem->author    = $objAuthor->name;
+                $objItem->published   = $objPodcasts->date;
+                $objAuthor            = $objPodcasts->getRelated( 'author' );
+                $objItem->author      = $objAuthor->name;
                 $objItem->description = $objPodcasts->teaser;
 
                 $objItem->explicit = $objPodcasts->explicit;
@@ -201,23 +204,23 @@ class NewsPodcasts extends \Frontend
 
 
                 // Add the Audio File
-                if ( $objPodcasts->podcast ) {
+                if ($objPodcasts->podcast) {
 
                     $objFile = \FilesModel::findByUuid( $objPodcasts->podcast );
 
-                    if ( $objFile !== null ) {
+                    if ($objFile !== null) {
                         $objItem->addEnclosure( $objFile->path );
 
                         // Prepare the duration / prefer linux tool mp3info
-                        $mp3file    = new GetMp3Duration( TL_ROOT . '/' . $objFile->path );
-                        if($this->checkMp3InfoInstalled()) {
+                        $mp3file = new GetMp3Duration( TL_ROOT . '/' . $objFile->path );
+                        if ($this->checkMp3InfoInstalled()) {
 
-                            $shell_command = 'mp3info -p "%m" ' . escapeshellarg( TL_ROOT . '/' . $objFile->path);
-                            $duration = shell_exec($shell_command);
+                            $shell_command = 'mp3info -p "%m" ' . escapeshellarg( TL_ROOT . '/' . $objFile->path );
+                            $duration      = shell_exec( $shell_command );
 
                         } else {
 
-                            $duration   =  $mp3file->getDuration();
+                            $duration = $mp3file->getDuration();
 
                         }
 
@@ -240,16 +243,16 @@ class NewsPodcasts extends \Frontend
      *
      * @return bool
      */
-    protected function checkMp3InfoInstalled ()
+    protected function checkMp3InfoInstalled()
     {
-        if (is_callable('shell_exec') && false === stripos(ini_get('disable_functions'), 'shell_exec')) {
-            $bla=shell_exec('type -P mp3info');
-            if (!empty($bla)){
+        if (is_callable( 'shell_exec' ) && false === stripos( ini_get( 'disable_functions' ), 'shell_exec' )) {
+            $bla = shell_exec( 'type -P mp3info' );
+            if (!empty($bla)) {
                 return true;
-            }else {
+            } else {
                 return false;
             }
-        }else{
+        } else {
             return false;
         }
     }
