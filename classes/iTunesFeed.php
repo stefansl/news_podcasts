@@ -34,7 +34,6 @@ class iTunesFeed extends \Feed
         $xml .= '<language>' . $this->language . '</language>';
         $xml .= '<copyright>&#x2117; &amp; &#xA9; ' . date('Y') . ' ' . $this->owner . '</copyright>';
 
-        // Todo: get from dca
         $xml .= '<itunes:subtitle>' . specialchars( $this->subtitle ) . '</itunes:subtitle>';
         $xml .= '<itunes:author>' . $this->author . '</itunes:author>';
         $xml .= '<itunes:summary>' . specialchars( $this->description ) . '</itunes:summary>';
