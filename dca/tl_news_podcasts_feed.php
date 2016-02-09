@@ -98,7 +98,7 @@ $GLOBALS['TL_DCA']['tl_news_podcasts_feed'] = array
     // Palettes
     'palettes' => array
     (
-        'default'                     => '{title_legend},title,alias,language;{description_legend},subtitle,description,category;{author_legend},owner,email,image,author,copyright;{archives_legend},archives;{config_legend},maxItems,feedBase'
+        'default'                     => '{title_legend},title,alias,language;{description_legend},subtitle,description,category,explicit;{author_legend},owner,email,image,author,copyright;{archives_legend},archives;{config_legend},maxItems,feedBase'
     ),
 
     // Fields
@@ -180,6 +180,16 @@ $GLOBALS['TL_DCA']['tl_news_podcasts_feed'] = array
             'inputType'               => 'select',
             'options_callback'        => array('tl_news_podcasts_feed', 'getItunesCategories'),
             'eval'                    => array('chosen'=>true, 'mandatory'=>true),
+            'sql'                     => "varchar(255) NOT NULL default ''"
+        ),
+        'explicit' => array
+        (
+            'label'                   => &$GLOBALS['TL_LANG']['tl_news_podcasts_feed']['explicit'],
+            'exclude'                 => true,
+            'filter'                  => true,
+            'inputType'               => 'select',
+            'options'                 => array('clean', 'yes'),
+            'eval'                    => array('chosen'=>true, 'includeBlankOption'=>true),
             'sql'                     => "varchar(255) NOT NULL default ''"
         ),
         'owner' => array

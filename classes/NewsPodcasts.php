@@ -122,13 +122,15 @@ class NewsPodcasts extends \Frontend
         $objFeed              = new iTunesFeed( $strFile );
         $objFeed->link        = $strLink;
         $objFeed->title       = $arrFeed['title'];
-        $objFeed->subtitle       = $arrFeed['subtitle'];
+        $objFeed->subtitle    = $arrFeed['subtitle'];
         $objFeed->description = $arrFeed['description'];
+        $objFeed->explicit    = $arrFeed['explicit'];
         $objFeed->language    = $arrFeed['language'];
         $objFeed->owner       = $arrFeed['owner'];
         $objFeed->email       = $arrFeed['email'];
         $objFeed->category    = $arrFeed['category'];
         $objFeed->published   = $arrFeed['tstamp'];
+
 
         //Add Feed Image
 
@@ -186,11 +188,12 @@ class NewsPodcasts extends \Frontend
                 $objItem->link  = $strLink . sprintf( $strUrl, (($objPodcasts->alias != '' && !$GLOBALS['TL_CONFIG']['disableAlias']) ? $objPodcasts->alias : $objPodcasts->id) );
 
                 $objItem->published = $objPodcasts->date;
-
                 $objAuthor = $objPodcasts->getRelated('author');
                 $objItem->author    = $objAuthor->name;
-
                 $objItem->description = $objPodcasts->teaser;
+
+                $objItem->explicit = $objPodcasts->explicit;
+
 
                 // Add the article image as enclosure
                 $objItem->addEnclosure( $objFeed->imageUrl );

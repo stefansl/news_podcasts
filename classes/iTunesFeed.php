@@ -37,6 +37,7 @@ class iTunesFeed extends \Feed
         $xml .= '<itunes:subtitle>' . specialchars( $this->subtitle ) . '</itunes:subtitle>';
         $xml .= '<itunes:author>' . $this->author . '</itunes:author>';
         $xml .= '<itunes:summary>' . specialchars( $this->description ) . '</itunes:summary>';
+        $xml .= (!empty($this->explicit)) ? '<itunes:explicit>' . specialchars( $this->explicit ) . '</itunes:explicit>' : '';
         $xml .= '<description>' . specialchars( $this->description ) . '</description>';
         $xml .= '<link>' . specialchars( $this->link ) . '</link>';
         $xml .= '<pubDate>' . date( 'r', $this->published ) . '</pubDate>';
@@ -59,6 +60,7 @@ class iTunesFeed extends \Feed
             $xml .= '<link>' . specialchars( $objItem->link ) . '</link>';
             $xml .= '<pubDate>' . date( 'r', $objItem->published ) . '</pubDate>';
             $xml .= '<itunes:subtitle><![CDATA[' . preg_replace( '/[\n\r]+/', ' ', $objItem->headline ) . ']]></itunes:subtitle>';
+            $xml .= (!empty($objItem->explicit)) ? '<itunes:explicit>' . specialchars( $objItem->explicit ) . '</itunes:explicit>' : '';
             $xml .= '<itunes:summary><![CDATA[' . preg_replace( '/[\n\r]+/', ' ', $objItem->description ) . ']]></itunes:summary>';
             $xml .= '<itunes:duration>' . $objItem->duration . '</itunes:duration>';
 

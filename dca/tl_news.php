@@ -17,7 +17,7 @@ $GLOBALS['TL_DCA']['tl_news']['config']['ondelete_callback'][] = array('tl_news_
 $GLOBALS['TL_DCA']['tl_news']['config']['onsubmit_callback'][] = array('tl_news_podcast', 'schedulePodcastUpdate');
 $GLOBALS['TL_DCA']['tl_news']['palettes']['default'] = str_replace('source;', 'source;{podcast_legend},addPodcast;', $GLOBALS['TL_DCA']['tl_news']['palettes']['default']);
 $GLOBALS['TL_DCA']['tl_news']['palettes']['__selector__'][] = 'addPodcast';
-$GLOBALS['TL_DCA']['tl_news']['subpalettes']['addPodcast'] = 'podcast';
+$GLOBALS['TL_DCA']['tl_news']['subpalettes']['addPodcast'] = 'podcast,explicit';
 
 $GLOBALS['TL_DCA']['tl_news']['fields']['addPodcast'] = array
 (
@@ -34,6 +34,16 @@ $GLOBALS['TL_DCA']['tl_news']['fields']['podcast'] = array(
     'inputType'               => 'fileTree',
     'eval'                    => array('filesOnly'=>true, 'extensions'=>'mp3', 'fieldType'=>'radio', 'mandatory'=>true),
     'sql'                     => "binary(16) NULL"
+);
+
+$GLOBALS['TL_DCA']['tl_news']['fields']['explicit'] = array(
+    'label'                   => &$GLOBALS['TL_LANG']['tl_news']['explicit'],
+    'exclude'                 => true,
+    'filter'                  => true,
+    'inputType'               => 'select',
+    'options'                 => array('clean', 'yes'),
+    'eval'                    => array('chosen'=>true, 'includeBlankOption'=>true),
+    'sql'                     => "varchar(255) NOT NULL default ''"
 );
 
 /**
