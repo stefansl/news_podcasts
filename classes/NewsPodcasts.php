@@ -126,6 +126,7 @@ class NewsPodcasts extends \Frontend
         $objFeed->description = $arrFeed['description'];
         $objFeed->explicit    = $arrFeed['explicit'];
         $objFeed->language    = $arrFeed['language'];
+        $objFeed->author       = $arrFeed['author'];
         $objFeed->owner       = $arrFeed['owner'];
         $objFeed->email       = $arrFeed['email'];
         $objFeed->category    = $arrFeed['category'];
