@@ -198,13 +198,26 @@ class NewsPodcasts extends \Frontend
 
                 // Add the Audio File
                 if ( $objPodcasts->podcast ) {
+
                     $objFile = \FilesModel::findByUuid( $objPodcasts->podcast );
+
                     if ( $objFile !== null ) {
                         $objItem->addEnclosure( $objFile->path );
 
-                        //Prepare the duration
-                        $mp3file           = new GetMp3Duration( TL_ROOT . '/' . $objFile->path );
-                        $objItem->duration = $mp3file->formatTime( $mp3file->getDuration() );
+                        // Prepare the duration / prefer linux tool mp3info
+                        $mp3file    = new GetMp3Duration( TL_ROOT . '/' . $objFile->path );
+                        if($this->checkMp3InfoInstalled()) {
+
+                            $shell_command = 'mp3info -p "%m" ' . escapeshellarg( TL_ROOT . '/' . $objFile->path);
+                            $duration = shell_exec($shell_command);
+
+                        } else {
+
+                            $duration   =  $mp3file->getDuration();
+
+                        }
+
+                        $objItem->duration = $mp3file->formatTime( $duration );
                     }
                 }
 
@@ -216,4 +229,25 @@ class NewsPodcasts extends \Frontend
         \File::putContent( 'share/' . $strFile . '.xml', $this->replaceInsertTags( $objFeed->$strType(), false ) );
 
     }
+
+
+    /**
+     * Check, if shell_exec and mp3info is callable
+     *
+     * @return bool
+     */
+    protected function checkMp3InfoInstalled ()
+    {
+        if (is_callable('shell_exec') && false === stripos(ini_get('disable_functions'), 'shell_exec')) {
+            $bla=shell_exec('type -P mp3info');
+            if (!empty($bla)){
+                return true;
+            }else {
+                return false;
+            }
+        }else{
+            return false;
+        }
+    }
+
 }
