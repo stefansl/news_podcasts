@@ -243,15 +243,15 @@ class NewsPodcasts extends \Frontend
      *
      * @return bool
      */
-    protected function checkMp3InfoInstalled ()
+    protected function checkMp3InfoInstalled()
     {
-        if (is_callable('shell_exec') && false === stripos(ini_get('disable_functions'), 'shell_exec')) {
-            if (!empty(shell_exec('type -P mp3info'))){
+        if (is_callable( 'shell_exec' ) && false === stripos( ini_get( 'disable_functions' ), 'shell_exec' )) {
+            if (!empty(shell_exec( 'type -P mp3info' ))) {
                 return true;
-            }else {
+            } else {
                 return false;
             }
-        }else{
+        } else {
             return false;
         }
     }
