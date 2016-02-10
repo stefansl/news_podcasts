@@ -37,7 +37,7 @@ class iTunesFeed extends \Feed
         $xml .= '<itunes:subtitle>' . specialchars( $this->subtitle ) . '</itunes:subtitle>';
         $xml .= '<itunes:author>' . $this->author . '</itunes:author>';
         $xml .= '<itunes:summary>' . specialchars( $this->description ) . '</itunes:summary>';
-        $xml .= (!empty($this->explicit)) ? '<itunes:explicit>' . specialchars( $this->explicit ) . '</itunes:explicit>' : '';
+        $xml .= '<itunes:explicit>' . ((!empty($this->explicit)) ? specialchars( $this->explicit )  : 'no') . '</itunes:explicit>';
         $xml .= '<description>' . specialchars( $this->description ) . '</description>';
         $xml .= '<link>' . specialchars( $this->link ) . '</link>';
         $xml .= '<pubDate>' . date( 'r', $this->published ) . '</pubDate>';
