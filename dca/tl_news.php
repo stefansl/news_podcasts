@@ -15,6 +15,7 @@ $GLOBALS['TL_DCA']['tl_news']['config']['onload_callback'][] = array('tl_news_po
 $GLOBALS['TL_DCA']['tl_news']['config']['oncut_callback'][] = array('tl_news_podcast', 'schedulePodcastUpdate');
 $GLOBALS['TL_DCA']['tl_news']['config']['ondelete_callback'][] = array('tl_news_podcast', 'schedulePodcastUpdate');
 $GLOBALS['TL_DCA']['tl_news']['config']['onsubmit_callback'][] = array('tl_news_podcast', 'schedulePodcastUpdate');
+$GLOBALS['TL_DCA']['tl_news']['list']['sorting']['child_record_callback']   = array('tl_news_podcast', 'listNewsPodcastArticles');
 $GLOBALS['TL_DCA']['tl_news']['palettes']['default'] = str_replace('source;', 'source;{podcast_legend},addPodcast;', $GLOBALS['TL_DCA']['tl_news']['palettes']['default']);
 $GLOBALS['TL_DCA']['tl_news']['palettes']['__selector__'][] = 'addPodcast';
 $GLOBALS['TL_DCA']['tl_news']['subpalettes']['addPodcast'] = 'podcast,explicit';
@@ -98,4 +99,19 @@ class tl_news_podcast extends tl_news
         $session[] = $dc->activeRecord->pid;
         $this->Session->set('podcast_feed_updater', array_unique($session));
     }
+
+    /**
+     * Add the type of input
+     *
+     * @param array $arrRow
+     *
+     * @return string
+     */
+    public function listNewsPodcastArticles($arrRow)
+    {
+        $arrRow['headline'] = ($arrRow['addPodcast'] == 1) ? $arrRow['headline'] . ' <img src="system/modules/news_podcasts/assets/icon_mic.svg" width="16" height="16" alt="Podcast">': $arrRow['headline'];
+
+        return parent::listNewsArticles($arrRow);
+    }
+
 }
