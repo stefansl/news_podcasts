@@ -246,12 +246,10 @@ class NewsPodcasts extends \Frontend
     protected function checkMp3InfoInstalled()
     {
         if (is_callable( 'shell_exec' ) && false === stripos( ini_get( 'disable_functions' ), 'shell_exec' )) {
+
             $check = shell_exec( 'type -P mp3info' );
-            if (!empty($check)) {
-                return true;
-            } else {
-                return false;
-            }
+            return (!empty($check)) ? true : false;
+
         } else {
             return false;
         }
