@@ -120,7 +120,7 @@ class NewsPodcasts extends \Frontend
 
         $objFeed              = new iTunesFeed( $strFile );
         $objFeed->link        = $strLink;
-        $objFeed->podcastLink = $strLink . $strFile . '.xml';
+        $objFeed->podcastUrl  = $strLink . $strFile . '.xml';
         $objFeed->title       = $arrFeed['title'];
         $objFeed->subtitle    = $arrFeed['subtitle'];
         $objFeed->description = $arrFeed['description'];
