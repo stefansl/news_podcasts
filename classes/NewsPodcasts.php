@@ -262,7 +262,6 @@ class NewsPodcasts extends \Frontend
         // remove P tags
         $html = preg_replace('/<p\b[^>]*>/i', '', $html);
         $html = preg_replace('/<\/p>/i', '', $html);
-        echo $html;
 
         // remove linebreaks
         $html = preg_replace('/[\n\r]+/i', '', $html);
