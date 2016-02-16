@@ -33,6 +33,7 @@ class iTunesFeed extends \Feed
         $xml .= '<title>' . specialchars( $this->title ) . '</title>';
         $xml .= '<language>' . $this->language . '</language>';
         $xml .= '<copyright>&#x2117; &amp; &#xA9; ' . date('Y') . ' ' . $this->owner . '</copyright>';
+        $xml .= '<atom:linkhref="' . $this->podcastLink . '" rel="self" type="application/rss+xml" />';
 
         $xml .= '<itunes:subtitle>' . specialchars( $this->subtitle ) . '</itunes:subtitle>';
         $xml .= '<itunes:author>' . $this->author . '</itunes:author>';
