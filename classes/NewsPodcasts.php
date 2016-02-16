@@ -120,10 +120,10 @@ class NewsPodcasts extends \Frontend
 
         $objFeed              = new iTunesFeed( $strFile );
         $objFeed->link        = $strLink;
-        $objFeed->podcastUrl  = $strLink . $strFile . '.xml';
+        $objFeed->podcastUrl  = $strLink . 'share/' . $strFile . '.xml';
         $objFeed->title       = $arrFeed['title'];
         $objFeed->subtitle    = $arrFeed['subtitle'];
-        $objFeed->description = $arrFeed['description'];
+        $objFeed->description = $this->cleanHtml($arrFeed['description']);
         $objFeed->explicit    = $arrFeed['explicit'];
         $objFeed->language    = $arrFeed['language'];
         $objFeed->author      = $arrFeed['author'];
@@ -187,15 +187,15 @@ class NewsPodcasts extends \Frontend
                 $objItem = new \FeedItem();
 
 
-                $objItem->headline    = $objPodcasts->headline;
-                $objItem->subheadline = ($objPodcasts->subheadline !== null) ? $objPodcasts->subheadline : $objPodcasts->description;
+                $objItem->headline    = $this->cleanHtml($objPodcasts->headline);
+                $objItem->subheadline = $this->cleanHtml(($objPodcasts->subheadline !== null) ? $objPodcasts->subheadline : $objPodcasts->description);
                 $objItem->link        = $strLink . sprintf( $strUrl,
                         (($objPodcasts->alias != '' && !$GLOBALS['TL_CONFIG']['disableAlias']) ? $objPodcasts->alias : $objPodcasts->id) );
 
                 $objItem->published   = $objPodcasts->date;
                 $objAuthor            = $objPodcasts->getRelated( 'author' );
                 $objItem->author      = $objAuthor->name;
-                $objItem->description = $objPodcasts->teaser;
+                $objItem->description = $this->cleanHtml($objPodcasts->teaser);
 
                 $objItem->explicit = $objPodcasts->explicit;
 
@@ -254,6 +254,20 @@ class NewsPodcasts extends \Frontend
         } else {
             return false;
         }
+    }
+
+
+    protected function cleanHtml($html)
+    {
+        // remove P tags
+        $html = preg_replace('/<p\b[^>]*>/i', '', $html);
+        $html = preg_replace('/<\/p>/i', '', $html);
+        echo $html;
+
+        // remove linebreaks
+        $html = preg_replace('/[\n\r]+/i', '', $html);
+
+        return $html;
     }
 
 }
