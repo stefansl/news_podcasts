@@ -98,7 +98,14 @@ $GLOBALS['TL_DCA']['tl_news_podcasts_feed'] = array
     // Palettes
     'palettes' => array
     (
-        'default' => '{title_legend},title,alias,language;{description_legend},subtitle,description,category,explicit;{author_legend},owner,email,image,author,copyright;{archives_legend},archives;{config_legend},maxItems,feedBase'
+        'default' => '{title_legend},title,alias,language;{description_legend},subtitle,description,category,explicit;{author_legend},owner,email,image,author,copyright;{archives_legend},archives;{config_legend},maxItems,feedBase;{statistic_legend},addPodtrac;',
+        '__selector__' => array('addPodtrac')
+    ),
+
+    // Subpalettes
+    'subpalettes' => array
+    (
+        'addPodtrac' => 'podtracPrefix'
     ),
 
     // Fields
@@ -269,7 +276,30 @@ $GLOBALS['TL_DCA']['tl_news_podcasts_feed'] = array
                                   'tl_class'       => 'w50'
             ),
             'sql'       => "varchar(255) NOT NULL default ''"
-        )
+        ),
+        'addPodtrac' => array
+        (
+            'label'     => &$GLOBALS['TL_LANG']['tl_news_podcasts_feed']['addPodtrac'],
+            'exclude'   => true,
+            'inputType' => 'checkbox',
+            'eval'      => array('submitOnChange' => true),
+            'sql'       => "char(1) NOT NULL default ''",
+        ),
+        'podtracPrefix' => array
+        (
+            'label'     => &$GLOBALS['TL_LANG']['tl_news_podcasts_feed']['podtracPrefix'],
+            'exclude'   => true,
+            'search'    => true,
+            'inputType' => 'text',
+            'default'   => 'http://www.podtrac.com/pts/redirect.mp3/',
+            'eval'      => array( 'trailingSlash'  => true,
+                                  'rgxp'           => 'url',
+                                  'decodeEntities' => true,
+                                  'maxlength'      => 255,
+                                  'tl_class'       => 'w50'
+            ),
+            'sql'       => "varchar(255) NOT NULL default ''"
+        ),
     )
 );
 

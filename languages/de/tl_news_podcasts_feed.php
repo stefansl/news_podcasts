@@ -12,7 +12,7 @@
  */
 
 $GLOBALS['TL_LANG']['tl_news_podcasts_feed']['alias']['0']         = 'Feed alias';
-$GLOBALS['TL_LANG']['tl_news_podcasts_feed']['alias']['1']         = 'Hier können Sie einen eindeutigen Dateinamen (ohne Endung) eingeben. Die XML-Datei wird automatisch im share-Ordner Ihrer Contao-Installation erstellt, z.B. als share/.podcast.xml';
+$GLOBALS['TL_LANG']['tl_news_podcasts_feed']['alias']['1']         = 'Hier können Sie einen eindeutigen Dateinamen (ohne Endung) eingeben. Die XML-Datei wird automatisch im share-Ordner Ihrer Contao-Installation erstellt, z.B. als share/podcast.xml';
 $GLOBALS['TL_LANG']['tl_news_podcasts_feed']['archives']['0']      = 'News Archiv';
 $GLOBALS['TL_LANG']['tl_news_podcasts_feed']['archives']['1']      = 'Hier legen Sie fest, welche Nachrichtenarchive in dem Feed enthalten sind.';
 $GLOBALS['TL_LANG']['tl_news_podcasts_feed']['archives_legend']    = 'News Archive';
@@ -60,4 +60,10 @@ $GLOBALS['TL_LANG']['tl_news_podcasts_feed']['summary']['1']       = 'wird auf d
 $GLOBALS['TL_LANG']['tl_news_podcasts_feed']['title']['0']         = 'Titel';
 $GLOBALS['TL_LANG']['tl_news_podcasts_feed']['title']['1']         = 'Bitte geben Sie einen Titel ein';
 $GLOBALS['TL_LANG']['tl_news_podcasts_feed']['title_legend']       = 'Titel und Sprache';
+$GLOBALS['TL_LANG']['tl_news_podcasts_feed']['statistic_legend']   = 'Statistiken';
+$GLOBALS['TL_LANG']['tl_news_podcasts_feed']['addPodtrac'][0]      = 'Aktiviere Podtrac';
+$GLOBALS['TL_LANG']['tl_news_podcasts_feed']['addPodtrac'][1]      = 'Für weitere Informationen bitte podtrac.com besuchen';
+$GLOBALS['TL_LANG']['tl_news_podcasts_feed']['podtracPrefix'][0]   = 'Podtrac Prefix';
+$GLOBALS['TL_LANG']['tl_news_podcasts_feed']['podtracPrefix'][1]   = 'Bitte den Podtrac Prefix eingeben (normalerweise: http://www.podtrac.com/pts/redirect.mp3/)';
+
 
