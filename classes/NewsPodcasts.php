@@ -227,18 +227,22 @@ class NewsPodcasts extends \Frontend
 
                     $objFile = \FilesModel::findByUuid($objPodcasts->podcast);
 
+                    //dump($objFile);
+
+
+
                     if ($objFile !== null) {
 
                         // Add Podtrac service
-                        if ($arrFeed['addPodtrac'] !== null) {
+                        if ( !empty($arrFeed['addPodtrac']) ) {
                             // If no trailing slash given, add one
                             $podtracPrefix = rtrim($arrFeed['podtracPrefix'], '/') . '/';
                             $podcastPath = $podtracPrefix . \Environment::get('host') . '/' . preg_replace('(^https?://)', '', $objFile->path);
                         } else {
-                            $podcastPath = $objFile->path;
+                            $podcastPath = \Environment::get('base') . \System::urlEncode($objFile->path);
                         }
 
-                        $objItem->addEnclosure($podcastPath);
+                        $objItem->podcastUrl = $podcastPath;
 
                         // Prepare the duration / prefer linux tool mp3info
                         $mp3file = new GetMp3Duration(TL_ROOT . '/' . $objFile->path);
@@ -253,7 +257,12 @@ class NewsPodcasts extends \Frontend
 
                         }
 
+                        $objPodcastFile = new \File($objFile->path, true);
+                        
+                        $objItem->length = $objPodcastFile->size;
+                        $objItem->type = $objPodcastFile->mime;
                         $objItem->duration = $mp3file->formatTime($duration);
+
                     }
                 }
 

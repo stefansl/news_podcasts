@@ -79,11 +79,7 @@ class iTunesFeed extends \Feed
             }
 
             // Enclosures
-            if ( is_array( $objItem->enclosure ) ) {
-                foreach ( $objItem->enclosure as $arrEnclosure ) {
-                    $xml .= '<enclosure url="' . $arrEnclosure['url'] . '" length="' . $arrEnclosure['length'] . '" type="' . $arrEnclosure['type'] . '" />';
-                }
-            }
+            $xml .= '<enclosure url="' . $objItem->podcastUrl . '" length="' . $objItem->length . '" type="' . $objItem->type . '" />';
 
             $xml .= '</item>';
         }
