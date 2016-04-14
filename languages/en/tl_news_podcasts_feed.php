@@ -59,5 +59,10 @@ $GLOBALS['TL_LANG']['tl_news_podcasts_feed']['summary']['1']       = 'This shown
 $GLOBALS['TL_LANG']['tl_news_podcasts_feed']['title']['0']         = 'Title';
 $GLOBALS['TL_LANG']['tl_news_podcasts_feed']['title']['1']         = 'Please enter a feed title.';
 $GLOBALS['TL_LANG']['tl_news_podcasts_feed']['title_legend']       = 'Title and language';
+$GLOBALS['TL_LANG']['tl_news_podcasts_feed']['statistic_legend']   = 'Statistics';
+$GLOBALS['TL_LANG']['tl_news_podcasts_feed']['addPodtrac'][0]      = 'Add Podtrac';
+$GLOBALS['TL_LANG']['tl_news_podcasts_feed']['addPodtrac'][1]      = 'Check podtrac.com for more information';
+$GLOBALS['TL_LANG']['tl_news_podcasts_feed']['podtracPrefix'][1]   = 'Podtrac prefix';
+$GLOBALS['TL_LANG']['tl_news_podcasts_feed']['podtracPrefix'][0]   = 'Please enter the Podtrac prefix (default: http://www.podtrac.com/pts/redirect.mp3/)';
 
 
