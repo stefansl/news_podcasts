@@ -62,7 +62,7 @@ $GLOBALS['TL_LANG']['tl_news_podcasts_feed']['title_legend']       = 'Title and 
 $GLOBALS['TL_LANG']['tl_news_podcasts_feed']['statistic_legend']   = 'Statistics';
 $GLOBALS['TL_LANG']['tl_news_podcasts_feed']['addStatistics'][0]      = 'Activate external statistics';
 $GLOBALS['TL_LANG']['tl_news_podcasts_feed']['addStatistics'][1]      = 'Provide external statistic tools like blubrry.com or podtrac.com';
-$GLOBALS['TL_LANG']['tl_news_podcasts_feed']['statisticsPrefix'][1]   = 'Media redirect url prefix';
-$GLOBALS['TL_LANG']['tl_news_podcasts_feed']['statisticsPrefix'][0]   = 'Please enter the statistics prefix url (e.g. for blubrry use http://media.blubrry.com/your_accountname)';
+$GLOBALS['TL_LANG']['tl_news_podcasts_feed']['statisticsPrefix'][0]   = 'Media redirect url prefix';
+$GLOBALS['TL_LANG']['tl_news_podcasts_feed']['statisticsPrefix'][1]   = 'Please enter the statistics prefix url (e.g. for blubrry use http://media.blubrry.com/your_accountname)';
 
 
