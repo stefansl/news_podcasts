@@ -233,11 +233,11 @@ class NewsPodcasts extends \Frontend
 
                     if ($objFile !== null) {
 
-                        // Add Podtrac service
-                        if ( !empty($arrFeed['addPodtrac']) ) {
+                        // Add statistics service
+                        if ( !empty($arrFeed['addStatistics']) ) {
                             // If no trailing slash given, add one
-                            $podtracPrefix = rtrim($arrFeed['podtracPrefix'], '/') . '/';
-                            $podcastPath = $podtracPrefix . \Environment::get('host') . '/' . preg_replace('(^https?://)', '', $objFile->path);
+                            $statisticsPrefix = rtrim($arrFeed['statisticsPrefix'], '/') . '/';
+                            $podcastPath = $statisticsPrefix . \Environment::get('host') . '/' . preg_replace('(^https?://)', '', $objFile->path);
                         } else {
                             $podcastPath = \Environment::get('base') . \System::urlEncode($objFile->path);
                         }

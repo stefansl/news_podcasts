@@ -61,9 +61,8 @@ $GLOBALS['TL_LANG']['tl_news_podcasts_feed']['title']['0']         = 'Titel';
 $GLOBALS['TL_LANG']['tl_news_podcasts_feed']['title']['1']         = 'Bitte geben Sie einen Titel ein';
 $GLOBALS['TL_LANG']['tl_news_podcasts_feed']['title_legend']       = 'Titel und Sprache';
 $GLOBALS['TL_LANG']['tl_news_podcasts_feed']['statistic_legend']   = 'Statistiken';
-$GLOBALS['TL_LANG']['tl_news_podcasts_feed']['addPodtrac'][0]      = 'Aktiviere Podtrac';
-$GLOBALS['TL_LANG']['tl_news_podcasts_feed']['addPodtrac'][1]      = 'Für weitere Informationen bitte podtrac.com besuchen';
-$GLOBALS['TL_LANG']['tl_news_podcasts_feed']['podtracPrefix'][0]   = 'Podtrac Prefix';
-$GLOBALS['TL_LANG']['tl_news_podcasts_feed']['podtracPrefix'][1]   = 'Bitte den Podtrac Prefix eingeben (normalerweise: http://www.podtrac.com/pts/redirect.mp3/)';
-
+$GLOBALS['TL_LANG']['tl_news_podcasts_feed']['addStatistics'][0]      = 'Externes Statistiktool aktivieren';
+$GLOBALS['TL_LANG']['tl_news_podcasts_feed']['addStatistics'][1]      = 'Sie können hier externe Statistiktools, wie blubrry.com oder podtrac.com aktivieren';
+$GLOBALS['TL_LANG']['tl_news_podcasts_feed']['statisticsPrefix'][1]   = 'Media Redirect URL Präfix';
+$GLOBALS['TL_LANG']['tl_news_podcasts_feed']['statisticsPrefix'][0]   = 'Bitte tragen Sie hier Ihren URL Präfix ein (z.B. für blubrry http://media.blubrry.com/mein_account)';
 

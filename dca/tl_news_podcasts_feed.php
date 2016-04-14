@@ -98,14 +98,14 @@ $GLOBALS['TL_DCA']['tl_news_podcasts_feed'] = array
     // Palettes
     'palettes' => array
     (
-        'default' => '{title_legend},title,alias,language;{description_legend},subtitle,description,category,explicit;{author_legend},owner,email,image,author,copyright;{archives_legend},archives;{config_legend},maxItems,feedBase;{statistic_legend},addPodtrac;',
-        '__selector__' => array('addPodtrac')
+        'default' => '{title_legend},title,alias,language;{description_legend},subtitle,description,category,explicit;{author_legend},owner,email,image,author,copyright;{archives_legend},archives;{config_legend},maxItems,feedBase;{statistic_legend},addStatistics;',
+        '__selector__' => array('addStatistics')
     ),
 
     // Subpalettes
     'subpalettes' => array
     (
-        'addPodtrac' => 'podtracPrefix'
+        'addStatistics' => 'statisticsPrefix'
     ),
 
     // Fields
@@ -265,7 +265,7 @@ $GLOBALS['TL_DCA']['tl_news_podcasts_feed'] = array
         'feedBase' => array
         (
             'label'     => &$GLOBALS['TL_LANG']['tl_news_podcasts_feed']['feedBase'],
-            'default'   => Environment::get( 'base' ),
+            'default'   => \Environment::get( 'base' ),
             'exclude'   => true,
             'search'    => true,
             'inputType' => 'text',
@@ -277,21 +277,21 @@ $GLOBALS['TL_DCA']['tl_news_podcasts_feed'] = array
             ),
             'sql'       => "varchar(255) NOT NULL default ''"
         ),
-        'addPodtrac' => array
+        'addStatistics' => array
         (
-            'label'     => &$GLOBALS['TL_LANG']['tl_news_podcasts_feed']['addPodtrac'],
+            'label'     => &$GLOBALS['TL_LANG']['tl_news_podcasts_feed']['addStatistics'],
             'exclude'   => true,
             'inputType' => 'checkbox',
             'eval'      => array('submitOnChange' => true),
             'sql'       => "char(1) NOT NULL default ''",
         ),
-        'podtracPrefix' => array
+        'statisticsPrefix' => array
         (
-            'label'     => &$GLOBALS['TL_LANG']['tl_news_podcasts_feed']['podtracPrefix'],
+            'label'     => &$GLOBALS['TL_LANG']['tl_news_podcasts_feed']['statisticsPrefix'],
             'exclude'   => true,
             'search'    => true,
             'inputType' => 'text',
-            'default'   => 'http://www.podtrac.com/pts/redirect.mp3/',
+            'default'   => '',
             'eval'      => array( 'trailingSlash'  => true,
                                   'rgxp'           => 'url',
                                   'decodeEntities' => true,
