@@ -28,10 +28,12 @@ class iTunesFeed extends \Feed
         $this->adjustPublicationDate();
 
         $xml = '<?xml version="1.0" encoding="' . $GLOBALS['TL_CONFIG']['characterSet'] . '"?>';
-        $xml .= '<rss xmlns:itunes="http://www.itunes.com/dtds/podcast-1.0.dtd" version="2.0">';
+        $xml .= '<rss xmlns:itunes="http://www.itunes.com/dtds/podcast-1.0.dtd" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">';
         $xml .= '<channel>';
+        $xml .= '<atom:link href="' . $this->podcastUrl . '" rel="self" type="application/rss+xml" />';
         $xml .= '<title>' . specialchars( $this->title ) . '</title>';
         $xml .= '<language>' . $this->language . '</language>';
+
         $xml .= '<copyright>&#x2117; &amp; &#xA9; ' . date('Y') . ' ' . $this->owner . '</copyright>';
 
         $xml .= '<itunes:subtitle>' . specialchars( $this->subtitle ) . '</itunes:subtitle>';
@@ -54,14 +56,14 @@ class iTunesFeed extends \Feed
         foreach ( $this->arrItems as $objItem ) {
             $xml .= '<item>';
             $xml .= '<title>' . specialchars( strip_tags( $objItem->headline ) ) . '</title>';
-            $xml .= '<author>' . specialchars( strip_tags( $objItem->author ) ) . '</author>';
+            //$xml .= '<author>' . specialchars( strip_tags( $objItem->author ) ) . '&lt;' . $objFeed->email . '&gt</author>';
             $xml .= '<itunes:author>' . specialchars( strip_tags( $objItem->author ) ) . '</itunes:author>';
-            $xml .= '<description><![CDATA[' . preg_replace( '/[\n\r]+/', ' ', $objItem->description ) . ']]></description>';
+            $xml .= '<description><![CDATA[' . $objItem->description . ']]></description>';
             $xml .= '<link>' . specialchars( $objItem->link ) . '</link>';
             $xml .= '<pubDate>' . date( 'r', $objItem->published ) . '</pubDate>';
-            $xml .= '<itunes:subtitle><![CDATA[' . preg_replace( '/[\n\r]+/', ' ', $objItem->headline ) . ']]></itunes:subtitle>';
+            $xml .= '<itunes:subtitle><![CDATA[' . $objItem->headline . ']]></itunes:subtitle>';
             $xml .= (!empty($objItem->explicit)) ? '<itunes:explicit>' . specialchars( $objItem->explicit ) . '</itunes:explicit>' : '';
-            $xml .= '<itunes:summary><![CDATA[' . preg_replace( '/[\n\r]+/', ' ', $objItem->description ) . ']]></itunes:summary>';
+            $xml .= '<itunes:summary><![CDATA[' . $objItem->description . ']]></itunes:summary>';
             $xml .= '<itunes:duration>' . $objItem->duration . '</itunes:duration>';
 
             // Add the GUID
@@ -77,11 +79,7 @@ class iTunesFeed extends \Feed
             }
 
             // Enclosures
-            if ( is_array( $objItem->enclosure ) ) {
-                foreach ( $objItem->enclosure as $arrEnclosure ) {
-                    $xml .= '<enclosure url="' . $arrEnclosure['url'] . '" length="' . $arrEnclosure['length'] . '" type="' . $arrEnclosure['type'] . '" />';
-                }
-            }
+            $xml .= '<enclosure url="' . $objItem->podcastUrl . '" length="' . $objItem->length . '" type="' . $objItem->type . '" />';
 
             $xml .= '</item>';
         }
