@@ -78,16 +78,8 @@ class tl_news_podcast extends tl_news
      */
     public function generatePodcastFeed()
     {
-        $session = $this->Session->get('podcast_feed_updater');
-
-        if (!is_array($session) || empty($session)) {
-            return;
-        }
-
         $this->import('NewsPodcasts');
         $this->NewsPodcasts->generateFeeds();
-
-        $this->Session->set('podcast_feed_updater', null);
     }
 
 
