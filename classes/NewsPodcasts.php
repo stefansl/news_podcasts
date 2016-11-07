@@ -18,8 +18,6 @@
  */
 namespace CLICKPRESS;
 
-use Contao\UserModel;
-
 
 /**
  * Class NewsPodcasts
@@ -39,7 +37,7 @@ class NewsPodcasts extends \Frontend
     public function generateFeed($intId, $blnIsFeedId = false)
     {
 
-        $objFeed = $blnIsFeedId ? \NewsModel::findByPk($intId) : \NewsArchiveModel::findByArchive($intId);
+        $objFeed = \NewsPodcastsFeedModel::findByArchive($intId);
 
         if ($objFeed === null) {
             return;
@@ -65,13 +63,13 @@ class NewsPodcasts extends \Frontend
     public function generateFeeds()
     {
         $this->import('Automator');
-        $this->Automator->purgeXmlFiles();
+        //$this->Automator->purgeXmlFiles();
 
         $objFeed = \NewsPodcastsFeedModel::findAll();
 
         if ($objFeed !== null) {
             while ($objFeed->next()) {
-                $objFeed->feedName = $objFeed->alias ?: 'itunes' . $objFeed->id;
+                $objFeed->feedName = $objFeed->alias ?: 'itunes_' . $objFeed->id;
                 $this->generateFiles($objFeed->row());
                 $this->log('Generated podcast feed "' . $objFeed->feedName . '.xml"', __METHOD__, TL_CRON);
             }
@@ -134,7 +132,6 @@ class NewsPodcasts extends \Frontend
 
 
         //Add Feed Image
-
         $objFile = \FilesModel::findByUuid($arrFeed['image']);
 
         if ($objFile !== null) {
@@ -144,23 +141,16 @@ class NewsPodcasts extends \Frontend
 
         // Get the items
         if ($arrFeed['maxItems'] > 0) {
-            $objPodcasts = \NewsModel::findPublishedByPids(
+            $objPodcasts = \NewsPodcastsModel::findPublishedByPids(
                 $arrArchives,
                 null,
-                $arrFeed['maxItems'],
-                null,
-                array('column' => 'addPodcast', 'value' => 1)
+                $arrFeed['maxItems']
             );
         } else {
-            $objPodcasts = \NewsModel::findPublishedByPids(
-                $arrArchives,
-                null,
-                null,
-                null,
-                array('column' => 'addPodcast', 'value' => 1)
+            $objPodcasts = \NewsPodcastsModel::findPublishedByPids(
+                $arrArchives
             );
         }
-
 
         // Parse the items
         if ($objPodcasts !== null) {
@@ -227,17 +217,17 @@ class NewsPodcasts extends \Frontend
 
                     $objFile = \FilesModel::findByUuid($objPodcasts->podcast);
 
-                    //dump($objFile);
-
-
-
                     if ($objFile !== null) {
 
                         // Add statistics service
-                        if ( !empty($arrFeed['addStatistics']) ) {
+                        if (!empty($arrFeed['addStatistics'])) {
                             // If no trailing slash given, add one
                             $statisticsPrefix = rtrim($arrFeed['statisticsPrefix'], '/') . '/';
-                            $podcastPath = $statisticsPrefix . \Environment::get('host') . '/' . preg_replace('(^https?://)', '', $objFile->path);
+                            $podcastPath      = $statisticsPrefix . \Environment::get('host') . '/' . preg_replace(
+                                    '(^https?://)',
+                                    '',
+                                    $objFile->path
+                                );
                         } else {
                             $podcastPath = \Environment::get('base') . \System::urlEncode($objFile->path);
                         }
@@ -258,9 +248,9 @@ class NewsPodcasts extends \Frontend
                         }
 
                         $objPodcastFile = new \File($objFile->path, true);
-                        
-                        $objItem->length = $objPodcastFile->size;
-                        $objItem->type = $objPodcastFile->mime;
+
+                        $objItem->length   = $objPodcastFile->size;
+                        $objItem->type     = $objPodcastFile->mime;
                         $objItem->duration = $mp3file->formatTime($duration);
 
                     }
