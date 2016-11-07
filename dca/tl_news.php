@@ -85,10 +85,7 @@ class tl_news_podcast extends tl_news
         }
 
         $this->import('NewsPodcasts');
-
-        foreach ($session as $id) {
-            $this->NewsPodcasts->generateFeedsByArchive($id);
-        }
+        $this->NewsPodcasts->generateFeeds();
 
         $this->Session->set('podcast_feed_updater', null);
     }
