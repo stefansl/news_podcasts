@@ -276,8 +276,8 @@ class NewsPodcasts extends \Frontend
         if (is_callable('shell_exec') && false === stripos(ini_get('disable_functions'), 'shell_exec')) {
 
             $check = shell_exec('type -P mp3info');
-            return (!empty($check)) ? true : false;
 
+            return (!empty($check)) ? true : false;
         } else {
             return false;
         }
